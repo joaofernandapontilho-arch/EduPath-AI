@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  --color-natural-bg: #F7F9F2;
+  --color-natural-text: #4B4B4B;
+  --color-natural-title: #3C3C3C;
+  --color-natural-muted: #AFB4AC;
+  --color-natural-primary: #58CC02; /* Duolingo Green */
+  --color-natural-primary-dark: #46A302;
+  --color-natural-accent: #FFC800; /* Duolingo Yellow */
+  --color-natural-accent-light: #FFDE00;
+  --color-natural-border: #E5E5E5;
+  --color-natural-border-light: #F0F0F0;
+  --color-natural-surface: #FFFFFF;
+}
+
+@layer base {
+  body {
+    @apply bg-natural-bg text-natural-text font-sans antialiased;
+  }
+}
+
+.natural-dots {
+  background-image: radial-gradient(#E5E5E5 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.mascot-bounce {
+  animation: bounce-subtle 4s ease-in-out infinite;
+}
+
+@utility markdown-body {
+  & p {
+    @apply mb-4 last:mb-0;
+  }
+  & h1, & h2, & h3 {
+    @apply font-black text-natural-title mt-6 mb-4 leading-tight;
+  }
+  & h1 { @apply text-3xl; }
+  & h2 { @apply text-2xl; }
+  & h3 { @apply text-xl; }
+  & ul, & ol {
+    @apply pl-6 mb-4 space-y-2;
+  }
+  & ul { @apply list-disc; }
+  & ol { @apply list-decimal; }
+  & code {
+    @apply bg-natural-border-light px-1.5 py-0.5 rounded-md font-mono text-sm text-[#FF4B4B];
+  }
+  & pre {
+    @apply bg-natural-title text-white p-4 rounded-2xl my-6 overflow-x-auto font-mono text-sm leading-relaxed;
+    & code {
+      @apply bg-transparent p-0 text-white block;
+    }
+  }
+  & strong {
+    @apply font-black text-natural-title;
+  }
+  & .katex {
+    @apply !text-natural-title;
+    font-size: 1.1em;
+  }
+  & .katex-display {
+    @apply my-6 overflow-x-auto overflow-y-hidden py-2;
+  }
+}
+
+@utility custom-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #E5E5E5;
+  border-radius: 10px;
+  border: 3px solid #F7F9F2;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D5D5D5;
+}
